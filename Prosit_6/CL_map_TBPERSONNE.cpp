@@ -6,11 +6,11 @@ NS_Componants::CL_map_TBPERSONNE::CL_map_TBPERSONNE()
     this->Nom = "NULL";
     this->prenom = "NULL";
 }
-
+//les strings ci-dessous représente des requête SQL
 String^ NS_Componants::CL_map_TBPERSONNE::CREATE()
 {
     String^ request;
-    request = "INSERT INTO TB_PERSONNE (Prenom,Nom)\nVALUES ("+ "'" + this->prenom + "','" + this->Nom + "');SELECT @@IDENTITY;";
+    request = "INSERT INTO TB_PERSONNE (Prenom,Nom)\nVALUES ("+ "'" + this->prenom + "','" + this->Nom + "');SELECT @@IDENTITY;"; 
     return request;
 }
 

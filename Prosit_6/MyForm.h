@@ -276,14 +276,14 @@ private: void load(int compteur)
 {
 
 	this->DS->Clear();
-	this->DS = this->Personne->ListePersonnes("dbo.TB_PERSONNE");
+	this->DS = this->Personne->ListePersonnes("dbo.TB_PERSONNE");//charge les données de la tables
 
-	if (this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count == 0)
+	if (this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count == 0) // si la table est vide
 	{
-		this->Personne->ajouter("A modifier", "A modifier");
-		this->DS = this->Personne->ListePersonnes("dbo.TB_PERSONNE");
+		this->Personne->ajouter("A modifier", "A modifier"); //ajouter une donnée a modifier pour éviter le crash
+		this->DS = this->Personne->ListePersonnes("dbo.TB_PERSONNE");// recharger la table
 	}
-		this->textID->Text = Convert::ToString(this->DS->Tables["dbo.TB_PERSONNE"]->Rows[this->compteur]->ItemArray[0]);
+		this->textID->Text = Convert::ToString(this->DS->Tables["dbo.TB_PERSONNE"]->Rows[this->compteur]->ItemArray[0]); //charge la donnée contenue dans la première colonne et dans la pointé par le compteur
 		this->textNom->Text = Convert::ToString(this->DS->Tables["dbo.TB_PERSONNE"]->Rows[this->compteur]->ItemArray[1]);
 		this->textPrenom->Text = Convert::ToString(this->DS->Tables["dbo.TB_PERSONNE"]->Rows[this->compteur]->ItemArray[2]);
 	
@@ -292,29 +292,29 @@ private: void load(int compteur)
 }
 
 private: System::Void premier_Click(System::Object^ sender, System::EventArgs^ e) {
-	compteur = 0;
-	load(compteur);
+	compteur = 0; // sélectionner la première donnée
+	load(compteur);// la charger
 }
 private: System::Void precedent_Click(System::Object^ sender, System::EventArgs^ e) {
 	
-	if (compteur > 0) {
-		compteur--;
-		load(this->compteur);
-		textBox4->Text = "Enregistrement : " + (compteur+1);
+	if (compteur > 0) { // si nous ne sommes pas à la première donnée
+		compteur--; // passer à la première donnée
+		load(this->compteur);// la charger
+		textBox4->Text = "Enregistrement : " + (compteur+1);// donner le numéro de la donnée
 	}
 	else textBox4->Text = "vous etes deja au minimum !";
 }
 private: System::Void suivant_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (compteur < this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count - 1) {
-		compteur++;
-		load(this->compteur);
-		textBox4->Text = "Enregistrement : " + (compteur + 1);
+	if (compteur < this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count - 1) { //si ne nous sommes pas a la dernière donnée de la table
+		compteur++; // selectionner la prochaine données
+		load(this->compteur); // la charger
+		textBox4->Text = "Enregistrement : " + (compteur + 1); // donner le numéro de la donnée
 	}
 	else textBox4->Text = "vous etes deja au maximum!";
 }
 private: System::Void dernier_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->compteur = this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count - 1;
-	load(compteur);
+	this->compteur = this->DS->Tables["dbo.TB_PERSONNE"]->Rows->Count - 1; // sélectionner la dernière donnée
+	load(compteur);// la charger
 	textBox4->Text = "Enregistrement : " + (compteur + 1);
 }
 private: System::Void delete_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -324,17 +324,17 @@ private: System::Void delete_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void modifier_Click(System::Object^ sender, System::EventArgs^ e) {
 	mode = "modifier";
 	this->textBox4->Text = "appuyer sur enregistrer pour modifier l'iteration";
-	this->textPrenom->Clear();
+	this->textPrenom->Clear();// suppression de l'écriture dans les cases
 	this->textNom->Clear();
-	this->textPrenom->ReadOnly = false;
+	this->textPrenom->ReadOnly = false; //donne le droit à l'utlisateur d'écrire dans les Textbox
 	this->textNom->ReadOnly = false;
 }
 private: System::Void new_Click(System::Object^ sender, System::EventArgs^ e) {
 	mode = "creer";
 	this->textBox4->Text = "appuyer sur enregistrer pour creer l'iteration";
-	this->textPrenom->Clear();
+	this->textPrenom->Clear();// suppression de l'écriture dans les cases
 	this->textNom->Clear();
-	this->textPrenom->ReadOnly = false;
+	this->textPrenom->ReadOnly = false;//donne le droit à l'utlisateur d'écrire dans les Textbox
 	this->textNom->ReadOnly = false;
 
 }
