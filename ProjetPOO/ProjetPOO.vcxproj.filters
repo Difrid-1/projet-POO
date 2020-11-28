@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CL_CAD.cpp">
+      <Filter>Dossier source</Filter>
+    </ClCompile>
+    <ClCompile Include="CL_map_TBPERSONNE.cpp">
+      <Filter>Dossier source</Filter>
+    </ClCompile>
+    <ClCompile Include="CL_svc_gestionPersonnes.cpp">
+      <Filter>Dossier source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>Dossier source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyForm.h" />
+    <ClInclude Include="CL_CAD.h">
+      <Filter>dossier en tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CL_map_TBPERSONNE.h">
+      <Filter>dossier en tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CL_svc_gestionPersonnes.h">
+      <Filter>dossier en tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="dossier en tête">
+      <UniqueIdentifier>{6ecf7c72-a43e-4f5c-9388-0a810b647506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dossier source">
+      <UniqueIdentifier>{715f0c93-311d-451b-b5e6-8f882dbca6c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
